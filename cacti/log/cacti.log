@@ -1,0 +1,34 @@
+10/12/2013 10:57:05 AM - AUTH LOGIN: User 'admin' Authenticated
+10/12/2013 08:13:45 AM - SYSTEM STATS: Time:0.3323 Method:cmd.php Processes:1 Threads:N/A Hosts:2 HostsPerProcess:2 DataSources:5 RRDsProcessed:5
+10/13/2013 10:03:10 AM - AUTH LOGIN: User 'admin' Authenticated
+10/13/2013 10:03:12 AM - CMDPHP: Poller[0] ERROR: SQL Row Failed!, Error:'1064', SQL:"select  graph_local.host_id,  graph_local.snmp_query_id,  graph_local.snmp_index,  graph_templates_graph.local_graph_id,  graph_templates_graph.title  from (graph_templates_graph,graph_local)  where graph_templates_graph.local_graph_id=graph_local.id  and graph_local.id="
+10/13/2013 10:03:12 AM - CMDPHP: Poller[0] ERROR: SQL Row Failed!, Error:'1064', SQL:"select  graph_local.host_id,  graph_local.snmp_query_id,  graph_local.snmp_index,  graph_templates_graph.local_graph_id,  graph_templates_graph.title  from (graph_templates_graph,graph_local)  where graph_templates_graph.local_graph_id=graph_local.id  and graph_local.id="
+10/13/2013 10:03:12 AM - CMDPHP: Poller[0] ERROR: SQL Row Failed!, Error:'1064', SQL:"select  graph_local.host_id,  graph_local.snmp_query_id,  graph_local.snmp_index,  graph_templates_graph.local_graph_id,  graph_templates_graph.title  from (graph_templates_graph,graph_local)  where graph_templates_graph.local_graph_id=graph_local.id  and graph_local.id="
+10/13/2013 10:03:12 AM - CMDPHP: Poller[0] ERROR: SQL Row Failed!, Error:'1064', SQL:"select  graph_local.host_id,  graph_local.snmp_query_id,  graph_local.snmp_index,  graph_templates_graph.local_graph_id,  graph_templates_graph.title  from (graph_templates_graph,graph_local)  where graph_templates_graph.local_graph_id=graph_local.id  and graph_local.id="
+10/13/2013 10:03:12 AM - CMDPHP: Poller[0] ERROR: SQL Cell Failed!, Error:'1064', SQL:"select local_graph_id from graph_templates_graph where local_graph_id="
+10/13/2013 10:07:41 AM - CMDPHP: Poller[0] ERROR: SQL Assoc Failed!, Error:'1064', SQL:"select consolidation_function_id as id,rra_id from rra_cf where rra_id="
+10/13/2013 10:07:41 AM - CMDPHP: Poller[0] ERROR: SQL Assoc Failed!, Error:'1064', SQL:"select consolidation_function_id as id,rra_id from rra_cf where rra_id="
+10/14/2013 08:44:13 AM - AUTH LOGIN: User 'admin' Authenticated
+11/09/2013 11:09:25 AM - AUTH LOGIN: User 'admin' Authenticated
+11/09/2013 11:35:10 AM - AUTH LOGIN: User 'admin' Authenticated
+11/20/2013 07:26:57 PM - AUTH LOGIN: User 'admin' Authenticated
+11/20/2013 07:53:22 PM - AUTH LOGIN: User 'admin' Authenticated
+11/20/2013 09:11:36 PM - AUTH LOGIN: User 'admin' Authenticated
+11/20/2013 09:20:40 PM - AUTH LOGIN: User 'admin' Authenticated
+11/20/2013 09:44:27 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 04:08:43 AM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 06:14:48 AM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 08:03:56 AM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 11:52:40 AM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 11:58:37 AM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 12:03:35 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 01:18:42 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 03:26:03 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 03:32:36 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 03:47:54 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 03:51:08 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 03:58:25 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 04:12:20 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 05:35:20 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 06:23:30 PM - AUTH LOGIN: User 'admin' Authenticated
+11/21/2013 06:33:00 PM - AUTH LOGIN: User 'admin' Authenticated
