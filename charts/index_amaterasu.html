@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+
+  <title>Team Amaterasu Project</title>
+
+  
+<script type="text/javascript" src="js/d3-zoom-pan-extent.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script src='jquery-1.9.1.min.js' type='text/javascript'></script>
+<script src='bootstrap.min.js' type='text/javascript'></script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+  <style type="text/css"></style>
+</head>
+ 
+<body>
+
+<div class='container' id='main-container'>
+<div class='content'>
+<div class='container' style='font: 12px sans-serif;'>
+
+  <div class='row'>
+    <div class='span12'>
+      <h3>Team Amaterasu Project on Visualization of Sun's Activity for the year 2001 (hourly averages)</h3>
+      <div class='row'>
+        <div class='pie-graph span6' id='dc-speed-histogram'>
+        <h4>Solar Wind Speed Distribution</h4>
+        </div>
+        <div class='pie-graph span6' id='dc-bmag-histogram'>
+	<h4>Magnetic Field Magnitude Distribution</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='span12' id='dc-time-speed-chart'>
+      <h4>Solar Wind Speed Time Series</h4>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='span12' id='dc-time-bmag-chart'>
+      <h4>Magnetic Field Magnitude Time Series</h4>
+    </div>
+  </div>
+  
+<!--  <div class='row'> 
+    <div class='span12' id='dc-composite-chart-speed'>
+      <h4>Composite Chart for Speed</h4>
+    </div>
+  </div>
+-->
+
+
+<H5>Generated with 
+  <a href="http://nickqizhu.github.io/dc.js/">dc.js</a>,
+  <a href="http://square.github.io/crossfilter/">crossfilter</a>, 
+  <a href="http://d3js.org/">d3.js</a> and 
+  <a href="http://twitter.github.io/bootstrap/">bootstrap</a>.
+</H5>
+
+</div>
+</div>
+</div>
+  
+<script>
+  
+/**********************************
+* Step0: Load data from json file *
+**********************************/
+
+// load data from a csv file
+d3.csv("data.csv", function (data) {
+//d3.json("data.php", function (data) {
+  // format our data
+  var dtgFormat = d3.time.format("%d.%m.%Y %H:%M");
+  
+  data.forEach(function(d) { 
+    d.dtg     = dtgFormat.parse(d.date);
+    d.density = +d.density;
+    d.temp    = +d.temp;
+    d.speed   = +d.speed;
+    d.Bmag    = +d.Bmag;
+  });
+  
+/******************************************************
+* Step1: Create the dc.js chart objects & link to div *
+******************************************************/
+
+  var speedChart = dc.barChart("#dc-speed-histogram"); //,"speedChartGroup"
+  var BmagChart = dc.barChart("#dc-bmag-histogram"); //,"bmagChartGroup"
+  var timeChartSpeed = dc.scatterPlot("#dc-time-speed-chart"); //,"speedChartGroup"
+  var timeChartBmag = dc.scatterPlot("#dc-time-bmag-chart"); //,"bmagChartGroup"
+  
+
+/****************************************
+* 	Run the data through crossfilter    *
+****************************************/
+
+  var facts = crossfilter(data);  // Gets our 'facts' into crossfilter
+
+/******************************************************
+* Create the Dimensions                               *
+* A dimension is something to group or filter by.     *
+* Crossfilter can filter by exact value, or by range. *
+******************************************************/
+
+  // for Solar Wind Speed
+  var speedValue = facts
+  	.dimension(function (d) {return d.speed;});
+  var speedValueGroupSum = speedValue
+  	.group(function(d) { return Math.floor(d / 5) * 5;})
+    .reduceSum(function(d) { return d.speed; });	// stays
+ 
+  var timeDimension = facts
+    .dimension(function (d) { return d.dtg;}); // group or filter by e
+
+  // for Magnetic Field Magnitude
+  var BmagValue = facts
+  	.dimension(function (d) { return d.Bmag;}); // stays
+  	
+ var BmagValueGroup = BmagValue
+ 	.group(function(d) { return Math.floor(d); }); //stays
+ //  var BmagValueGroup = BmagValue.group(); //stays 
+ 
+
+var speedTimeGroupSum = timeDimension
+	.group()
+    .reduceSum(function(d) { return d.speed; });
+
+var bmagTimeGroupSum = timeDimension
+	.group()
+    .reduceSum(function(d) { return d.Bmag; });
+
+var timeRange = [d3.min(data,function(d){return d.dtg;}),d3.max(data,function(d){return d.dtg;})];
+var speedRange = [200, 900]; //[d3.min(data,function(d){return d.speed;}),d3.max(data,function(d){return d.speed;})];
+var BmagRange = [0,60]; //[d3.min(data,function(d){return d.Bmag;}),d3.max(data,function(d){return d.Bmag;})];
+
+var minSpeed = 0;
+var maxSpeed = 0;
+var minBmag = 0;
+var maxBmag = 0;
+
+/***************************************
+* 	Step4: Create the Visualisations   *
+***************************************/
+  
+  // Solar Wind Speed Bar Graph Summed
+  speedChart
+    .width(480)
+    .height(150)
+    .margins({top: 10, right: 20, bottom: 30, left: 60})
+    .dimension(speedValue)						// the values across the x axis
+    .group(speedValueGroupSum)						// the values on the y axis
+    .xAxisLabel("Solar Wind Speed [km/s]")
+    .centerBar(true)
+    .gap(56)                                            // bar width Keep increasing to get right then back off.
+    .yAxisPadding(10)
+    .x(d3.scale.linear().domain(speedRange).rangeRound([0,70]))
+    .elasticY(true)
+    .xAxis()
+    .tickFormat(function(v) {return v;});
+
+
+  // Depth bar graph
+  BmagChart
+    .width(480)
+    .height(150)
+    .margins({top: 10, right: 10, bottom: 30, left: 40})
+    .dimension(BmagValue)
+    .group(BmagValueGroup)
+    .xAxisLabel("Magnetic Field Magnitude [nT]")
+    .centerBar(true)
+    .gap(56)                    // bar width Keep increasing to get right then back off.
+    .x(d3.scale.linear().domain(BmagRange).rangeRound([0, 70]))
+//  .x(d3.scale.linear().domain([0, 60]))
+    .elasticY(true) 
+    .yAxisPadding(5)
+    .xAxis()
+    .tickFormat(function(v) {return v;});
+
+//TIME SERIES CHART FOR THE SOLAR WIND SPEED
+  timeChartSpeed
+    .width(768)
+    .height(480)
+    .margins({top: 10, right: 10, bottom: 30, left: 40})
+  //.x(d3.time.scale().domain([new Date(2000, 6, 1), new Date(2002, 6, 31)]).rangeRound([0, 70]))
+    .x(d3.time.scale().domain(timeRange).rangeRound([0, 70]))
+  //.y(d3.time.scale().domain([200, d3.max(data,function(d){return d.speed;})]).rangeRound([100, 70]))
+    .brushOn(true)
+    .yAxisLabel("Solar Wind Speed [km/s]")
+    .elasticY(true)
+    .yAxisPadding(5)
+    .dimension(timeDimension)
+    .group(speedTimeGroupSum)
+ //   .clamp(true)
+    .mouseZoomable(true);
+
+//d3.max(data,function(d){return d.speed;})
+
+//TIME SERIES CHART FOR THE MAGNETIC FIELD
+   timeChartBmag
+    .width(768)
+    .height(480)
+    .margins({top: 10, right: 10, bottom: 30, left: 40})
+    .x(d3.time.scale().domain(timeRange).rangeRound([0, 70]))
+    .brushOn(true)
+    .yAxisLabel("Magnetic Field Magnitude [nT]")
+    .elasticY(true)
+    .transitionDuration(100)
+    .yAxisPadding(1)
+    .dimension(timeDimension)
+    .group(bmagTimeGroupSum)
+    .mouseZoomable(true);
+
+
+//COMPOSITE CHART
+   // dc.compositeChart("#dc-composite-chart-speed"
+    //.width(480)
+    //.height(700)
+    //.margins({top: 10, right: 20, bottom: 30, left: 60})
+    //.dimension(speedValue)								// the values across the x axis
+    //.group(speedValueGroupSum)
+    //.compose([
+    //speedChart.group(speedValueGroupSum),timeChartSpeed.group(speedTimeGroupSum)
+    //])	
+    //.elasticY(true)
+    // (optional) when elasticY is on whether padding should be applied to y axis domain, :default=0
+    //.yAxisPadding(100)
+    // (optional) whether chart should rescale x axis to fit data, :default = false
+    //.elasticX(true)
+    // (optional) when elasticX is on whether padding should be applied to x axis domain, :default=0
+    //.xAxisPadding(500)
+    //.brushOn(true);
+
+
+/****************************
+* Step6: Render the Charts  *
+****************************/
+	
+  dc.renderAll();
+  });
+  
+</script>
+    
+</body>
+</html>

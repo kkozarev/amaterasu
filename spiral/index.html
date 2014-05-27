@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"> 
+	<head>
+		<meta charset="utf-8">
+	    <title>Spiral segment chart progress</title>
+	    <link rel="stylesheet" href="css/style.css">
+	    <link rel="stylesheet" href="css/svg.css">
+	</head>
+
+	<body>
+		<section>
+			<h1>Spiral segment chart</h1>
+                        <h3>Move your mouse over it for interactivity</h3>
+			<p>A spiral segment chart displays quantitative data as an array of spiral segments, coloured according to value.</p>
+			<div class="chart" id="spiralchart"></div>
+			<div id="info"></div>
+			</p>This is implemented using <a href="http://d3js.org">D3.js</a> and is <a href="http://bost.ocks.org/mike/chart/">reusable</a>.</p>
+			<p>The code to create the above chart is:</p>
+			<pre><code>var chart = spiralSegmentChart()
+    .innerRadius(20)
+    .yearLabels(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"])
+    .monthLabels(["January","February","March","April","May","June","July","August","September",
+                    "October","November","December"]);
+
+var spiralData = [ 0.176042, 0.096146, 0.076414, ..more data.. , 0.192478, 0.134997, 0.152271 ];
+
+d3.select('#spiralchart')
+    .selectAll('svg')
+    .data([spiralData])
+    .enter()
+    .append('svg')
+    .call(chart);</code></pre>
+		</section>
+
+		<footer>
+			<p>Built with <a href="http://d3js.org">D3</a>.
+			Chart development by Kamen Kozarev, based on <a href="http://prcweb.co.uk">Peter Cook's Circular Heat Chart</a>.</p>
+		</footer>
+
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="js/spiralSegmentChart.js"></script>
+		<script src="js/amaterasu_spiral.js"></script>
+	</body>
+</html>

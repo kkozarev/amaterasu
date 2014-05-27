@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+
+  <title>Team Amaterasu Project - DATA IMPORT TEST</title>
+<h1>Team Amaterasu Project - DATA IMPORT TEST</h1>
+  
+<script type="text/javascript" >
+$.ajax({
+   url: 'call.php',
+   dataType: 'json'
+}).done(
+   function(data){
+     var ID = data[0];
+     var Bmag = data[1];
+   }
+);
+
+document.write(ID);
+document.write(Bmag);
+
+</script>
+    
+</body>
+</html>
