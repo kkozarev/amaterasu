@@ -1,0 +1,14 @@
+[26-Apr-2014 22:20:47 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TYPE=MyISAM' at line 14 for query CREATE TABLE IF NOT EXISTS `4nh_sabre_table` (
+	 			`id` bigint(20) NOT NULL auto_increment,
+				`user_id` bigint(20) NOT NULL default -1,
+	 			`user` tinytext,
+	 			`email` varchar(100),
+	 			`user_IP` varchar(100) NOT NULL,
+				`first_mod` datetime NOT NULL default '0000-00-00 00:00:00',
+	 			`last_mod` datetime NOT NULL default '0000-00-00 00:00:00',
+	 			`msg` text,
+				`status` enum('ok','ko','pending','to confirm') NOT NULL default 'pending',
+				`captcha` varchar(100),
+				`md5_id` varchar(50),
+				PRIMARY KEY (`id`)
+				) TYPE=MyISAM; made by activate_plugin, do_action('activate_sabre/sabre.php'), call_user_func_array, Sabre->activate, Sabre->DB_update

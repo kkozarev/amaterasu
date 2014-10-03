@@ -1,0 +1,38 @@
+/*
+Theme Name: Amaterasu Project
+Theme URI: http://amaterasuproject.com/
+Description: Amaterasu Project
+Author: lpetrov
+Author URI:     http: //clubaurora.org/
+Template: amaterasu
+Version: 0.1
+*/
+
+
+
+/* Wrap  Element*/
+
+body {
+	background:url(./i/bg.png);
+	background-position:center top;
+}
+
+#wrap {
+	width:1190px;
+	margin:0 auto;
+	position:relative;
+}
+
+#menu{
+
+}
+
+.left{
+    color: white;
+
+}
+
+.right{
+    color: white;
+
+}

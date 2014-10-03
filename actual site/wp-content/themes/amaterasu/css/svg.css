@@ -1,0 +1,28 @@
+/* SVG styling */
+svg {
+	width: 960px;
+	height: 300px;
+}
+#spiralchart svg, #chart3 svg {
+	height: 700px;
+}
+#chart4 svg {
+	height: 470px;
+}
+path {
+	stroke: #0ab3ff;
+	stroke-width: 0.1px;
+}
+
+.labels {
+	fill: #095d88;
+	font-weight: 200;
+	letter-spacing: 1px;
+}
+.labels.segment {
+	font-size: 16px;
+}
+
+#chart3 .labels {
+	fill: #555;
+}

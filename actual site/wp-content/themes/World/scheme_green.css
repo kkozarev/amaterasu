@@ -1,0 +1,18 @@
+.page_bg{background:#fcfcfc url(images/page_bg_green.png) left top repeat-x;}
+a{color:#218b53;font-style:normal;text-decoration:none}
+#content .more-link:hover {color: #218b53 !important;}
+#bottom .box ul li a:hover{color:#218b53;text-decoration:none}
+#bottom .box .comments a{color:#218b53;font-weight:700}
+#content .postnav a{color:#218b53;padding:0 50px;text-decoration:none}
+#sidebar ul li a:hover{color: #218b53;}
+#sidebar ul#recentcomments li.recentcomments a.url{background:none;color:#218b53;display:inline;padding:6px;text-decoration:none;text-shadow:none}
+#comments ol li .comment-author cite.fn{color:#218b53;font-style:normal}
+#header a.logo,#header a.logo:link,#header a.logo:visited{color:#218b53;display:block;font-family:"Cookie",Lucida,Verdana,sans-serif;font-size:40px;font-weight:400;line-height:normal;text-align:center;text-decoration:none;}
+.postmetadata .orange {color: #218b53;}
+#wrapper #navi ol.main_menu li.current_page_item a,#sidebar ul#recentcomments li.recentcomments a:hover span{color:#218b53}
+#navi ol.main_menu li a:hover,#content .single h2 a:hover,#sidebar ul.categories li a:hover,#sidebar .tags a:hover{color:#218b53;text-decoration:none}
+#navi ol.main_menu li ul li a:hover,#content .post h2 a:hover,#content .single a,#comments a{color:#218b53;text-decoration:none}
+.single .entry table tr th{ background:#f2f2f2;font-weight:700;color:#218b53;}
+#footer {background: url("images/footer_bg_green.png") repeat-x scroll left top #171717;}
+#content h2.title strong,#content .postnav a:hover{color:#218b53;font-weight: 400;}
+#toTop {color: #218b53;}

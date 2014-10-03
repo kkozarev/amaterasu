@@ -1,0 +1,4 @@
+document.getElementById("button").onclick = function() {
+vara = prompt("Give me input - from ");
+varb = prompt("Give me input - to ");
+}

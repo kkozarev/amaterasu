@@ -1,0 +1,26 @@
+/* SVG styling */
+svg {
+	width: 960px;
+	height: 400px;
+}
+#spiralchart svg {
+	height: 700px;
+}
+
+path {
+	stroke: #777;
+	stroke-width: 0.1px;
+}
+
+.labels {
+	fill: #aaa;
+	font-weight: 200;
+	letter-spacing: 1px;
+}
+.labels.month {
+	font-size: 18px;
+}
+.labels.year {
+	font-size: 12px;
+	stroke: #aaa
+}

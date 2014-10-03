@@ -1,0 +1,5 @@
+[26-May-2014 00:28:39 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/amateras/public_html/wp-content/themes/amaterasu/index.php on line 1
+[10-Jun-2014 12:23:22 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/amateras/public_html/wp-content/themes/amaterasu/index.php on line 1
+[27-Jun-2014 00:52:22 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/amateras/public_html/wp-content/themes/amaterasu/index.php on line 1
+[28-Jul-2014 02:40:43 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/amateras/public_html/wp-content/themes/amaterasu/index.php on line 1
+[29-Aug-2014 18:51:07 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/amateras/public_html/wp-content/themes/amaterasu/index.php on line 1
